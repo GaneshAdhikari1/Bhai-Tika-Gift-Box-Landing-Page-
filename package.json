@@ -1,0 +1,26 @@
+{
+  "name": "giftora-nepal-cod-funnel",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "lint": "next lint",
+    "format:sheet": "node scripts/apply-sheet-theme.cjs",
+    "verify:integrations": "node scripts/verify-integrations.cjs"
+  },
+  "dependencies": {
+    "googleapis": "^188.0.0",
+    "next": "^16.4.3",
+    "nodemailer": "^10.3.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17"
+  }
+}
