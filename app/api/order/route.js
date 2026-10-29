@@ -20,6 +20,10 @@ const orderSchema = z.object({
 });
 
 const recentRequests = new Map();
+const productionOrigins = [
+  "https://tika.ganeshadhikari1.com.np",
+  "https://www.tika.ganeshadhikari1.com.np"
+];
 
 function cleanupRequests() {
   const cutoff = Date.now() - 10 * 60 * 1000;
@@ -34,7 +38,11 @@ function originAllowed(request) {
 
   try {
     const submittedOrigin = new URL(origin).origin;
-    const configuredOrigins = [process.env.FRONTEND_URL, process.env.NEXT_PUBLIC_SITE_URL]
+    const configuredOrigins = [
+      ...productionOrigins,
+      process.env.FRONTEND_URL,
+      process.env.NEXT_PUBLIC_SITE_URL
+    ]
       .filter(Boolean)
       .flatMap((value) => value.split(","))
       .map((value) => new URL(value.trim()).origin);
