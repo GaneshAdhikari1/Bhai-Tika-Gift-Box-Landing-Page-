@@ -66,7 +66,7 @@ Copy `.env.example` to `.env.local` and configure:
 | `SMTP_USER` | Authenticated Gmail address |
 | `SMTP_PASS` | Gmail App Password, not the normal account password |
 | `EMAIL_SERVICE_API_KEY` | Reserved for switching to an email API provider; not used by SMTP |
-| `FRONTEND_URL` | Allowed frontend origin, e.g. `https://your-domain.com` |
+| `FRONTEND_URL` | Allowed frontend origin(s), comma-separated when both a Vercel URL and custom domain are active |
 | `ORDER_DEMO_MODE` | `true` only for credential-free local testing |
 
 ### Private key formatting

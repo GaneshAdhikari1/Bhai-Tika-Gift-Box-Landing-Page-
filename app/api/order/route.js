@@ -29,11 +29,17 @@ function cleanupRequests() {
 }
 
 function originAllowed(request) {
-  const configured = process.env.FRONTEND_URL;
   const origin = request.headers.get("origin");
-  if (!configured || !origin) return true;
+  if (!origin) return true;
+
   try {
-    return new URL(origin).origin === new URL(configured).origin;
+    const submittedOrigin = new URL(origin).origin;
+    const configuredOrigins = [process.env.FRONTEND_URL, process.env.NEXT_PUBLIC_SITE_URL]
+      .filter(Boolean)
+      .flatMap((value) => value.split(","))
+      .map((value) => new URL(value.trim()).origin);
+
+    return configuredOrigins.length === 0 || configuredOrigins.includes(submittedOrigin);
   } catch {
     return false;
   }
